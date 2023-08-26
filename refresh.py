@@ -56,14 +56,12 @@ async def refresh_topic():
     await EmotionAnalyzer.detect_changes_on_emotions_and_send(old_video_datas, new_video_datas)
 
 def main():
-    asyncio.run(refresh_topic())
-#     loop = asyncio.get_event_loop()
-#     loop.run_until_complete(refresh_topic())
-#     loop.close()
+    loop = asyncio.get_event_loop()
+    loop.run_until_complete(refresh_topic())
+    loop.close()
 
-# schedule.every().day.at("02:00").do(main)
-# main()
-# while True:
-#     schedule.run_pending()
-#     time.sleep(1)
+schedule.every().day.at("02:00").do(main)
 main()
+while True:
+    schedule.run_pending()
+    time.sleep(1)
