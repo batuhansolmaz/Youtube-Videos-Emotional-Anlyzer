@@ -115,8 +115,5 @@ def create_topic_if_not_exists(bootstrap_servers, topic_name, partitions, replic
         except TopicAlreadyExistsError:
             print(f"Topic '{topic_name}' already exists.")
 
-create_topic_if_not_exists(config["kafka"]["bootstrap_servers"], config["kafka"]["topic"], 1, 1)
 
-    # while True:
-    #     schedule.run_pending()
-    #     time.sleep(1)
+
