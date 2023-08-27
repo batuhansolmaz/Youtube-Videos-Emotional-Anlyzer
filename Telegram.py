@@ -81,6 +81,7 @@ async def handle_message(update: Update, context: ContextTypes.DEFAULT_TYPE):
             print(data)
             await send_pie_chart(update, context, plot_emotions(data ,id))
         else:
+            Youtube.create_topic_if_not_exists(config["kafka"]["bootstrap_servers"], config["kafka"]["topic"], 0, 1)
             partition_count=consumers.get_partition_count(config["kafka"]["topic"])
             #add 1 partition
             consumers.add_partitions(config["kafka"]["topic"], partition_count+1, config["kafka"]["bootstrap_servers"])
@@ -96,6 +97,7 @@ async def handle_message(update: Update, context: ContextTypes.DEFAULT_TYPE):
         video_ids = Youtube.fetchAllVideoIds(id)
         response = "Thank you for your playlist. I have analyzed it and here is what I think about it:\n"
         await update.message.reply_text(response)
+        Youtube.create_topic_if_not_exists(config["kafka"]["bootstrap_servers"], config["kafka"]["topic"], 0, 1)
         for video_id in video_ids:
             if(EmotionAnalyzer.check_if_video_exists(video_id)):
                 await send_pie_chart(update, context, plot_emotions(EmotionAnalyzer.fetch_video_data(video_id) ,video_id))

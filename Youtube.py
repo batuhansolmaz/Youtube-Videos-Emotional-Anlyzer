@@ -12,7 +12,8 @@ import schedule
 import time
 import EmotionAnalyzer
 import logging
-
+from kafka.admin import KafkaAdminClient, NewTopic
+from kafka.errors import TopicAlreadyExistsError
 
 from kafka import KafkaConsumer, TopicPartition
 google_api_key = config["google_api_key"]
@@ -100,7 +101,21 @@ def produce_comments(video_id , partition):
     producer.flush()
     producer.close() 
 
+def create_topic_if_not_exists(bootstrap_servers, topic_name, partitions, replication_factor):
+    admin_client = KafkaAdminClient(bootstrap_servers=bootstrap_servers)
+    
+    existing_topics = admin_client.list_topics()
+    if topic_name in existing_topics:
+        print(f"Topic '{topic_name}' already exists.")
+    else:
+        new_topic = NewTopic(name=topic_name, num_partitions=partitions, replication_factor=replication_factor)
+        try:
+            admin_client.create_topics(new_topics=[new_topic])
+            print(f"Topic '{topic_name}' created successfully.")
+        except TopicAlreadyExistsError:
+            print(f"Topic '{topic_name}' already exists.")
 
+create_topic_if_not_exists(config["kafka"]["bootstrap_servers"], config["kafka"]["topic"], 1, 1)
 
     # while True:
     #     schedule.run_pending()
