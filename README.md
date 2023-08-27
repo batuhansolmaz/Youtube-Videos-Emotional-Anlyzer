@@ -23,6 +23,7 @@ By combining cutting-edge technologies, intuitive user experience, and powerful 
 
 
 <img width="888" alt="Screenshot 2023-08-26 at 20 49 29" src="https://github.com/batuhansolmaz/Youtube-Videos-Emotional-Anlyzer/assets/108425372/6090903f-bcad-41fb-bfe7-6210763485bd">
+
 ## Prerequisites
 Before using the system, ensure you complete the following prerequisites:
 
