@@ -15,7 +15,7 @@ The **YouTube Videos Emotional Analyzer** is an innovative solution designed to 
 
 5. **User-Friendly Telegram Bot:** The project is accessible through a Telegram bot interface, making it user-friendly and convenient. With commands such as `/list`, `/start`, and `/help`,`/Unsubscribe`  users can seamlessly navigate the system and retrieve the information they need.
 
-6. **Integration with Elasticsearch,Kibana and Kafka:** The backend infrastructure of the project is supported by Elasticsearch, Kibana and also Kafka. This combination enables efficient data storage, retrieval, and visualization, ensuring a robust and scalable platform for emotional analysis.
+6. **Integration with Elasticsearch, Kibana and Kafka:** The backend infrastructure of the project is supported by Elasticsearch, Kibana and also Kafka. This combination enables efficient data storage, retrieval, and visualization, ensuring a robust and scalable platform for emotional analysis.
 
 The **YouTube Videos Emotional Analyzer** project transcends conventional analytics by tapping into the emotional pulse of online communities. It bridges the gap between data and emotions, allowing content creators to adapt their strategies, marketers to refine their campaigns, and researchers to gain profound insights into human sentiment in the digital landscape.
 
